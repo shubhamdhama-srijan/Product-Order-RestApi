@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import com.shubham.project.entity.Product;
 import com.shubham.project.repository.ProductRepository;
 
@@ -22,5 +23,11 @@ public class ProductService {
     	return productRepository.save(product);
     	
     }
+    
+    public Product getProductById(int id) {
+		
+		return productRepository.findById(id).get();
+
+	}
 
 }
