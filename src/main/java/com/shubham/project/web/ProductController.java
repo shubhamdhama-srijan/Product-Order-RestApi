@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.shubham.book.model.Book;
 import com.shubham.project.entity.Product;
 import com.shubham.project.service.ProductService;
 
@@ -26,12 +24,12 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-	@PostMapping("/signup")
+	@PostMapping
     public ResponseEntity<Product> createProduct(@RequestBody Product product){
         return new ResponseEntity<>(productService.createProduct(product), HttpStatus.CREATED);
     }
 
-    @GetMapping("/fetchAll")
+    @GetMapping
     public ResponseEntity<List<Product>> getAllUsers(){
         return ResponseEntity.ok(productService.getAllProducts());
     }
