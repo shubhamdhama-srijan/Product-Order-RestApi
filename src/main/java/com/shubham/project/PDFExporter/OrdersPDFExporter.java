@@ -55,7 +55,7 @@ public class OrdersPDFExporter {
 	private void writeTableData(PdfPTable table) {
 		for (Order order : allOrders) {
 			table.addCell(String.valueOf(order.getOrdId()));
-			table.addCell(String.valueOf(order.getProduct()));
+			table.addCell(String.valueOf(order.getProduct().getProductName()));
 			table.addCell(order.getOrderTitle());
 			table.addCell(order.getOrderName());
 			table.addCell(String.valueOf(order.getOrderdDate()));
@@ -69,7 +69,6 @@ public class OrdersPDFExporter {
 		PdfWriter.getInstance(document, response.getOutputStream());
 
 		document.open();
-
 		Font font = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
 		font.setColor(Color.BLUE);
 		font.setSize(18);
@@ -80,7 +79,7 @@ public class OrdersPDFExporter {
 		PdfPTable table = new PdfPTable(5);
 		table.setWidthPercentage(100);
 		table.setSpacingBefore(15);
-//		table.setWidths(new float[] { 1.5f, 3.5f, 3.0f, 3.0f, 1.5f });
+		table.setWidths(new float[] { 1.5f, 3.5f, 3.0f, 3.0f, 1.5f });
 
 		writeTableHeader(table);
 		writeTableData(table);
