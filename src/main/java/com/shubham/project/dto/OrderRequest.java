@@ -3,6 +3,7 @@ package com.shubham.project.dto;
 import java.util.Date;
 
 import javax.validation.constraints.Future;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -28,7 +29,7 @@ public class OrderRequest {
 	
 	@NotBlank(message = "Order Date should not be Blank!!")
 	@NotNull(message = "Order Date should not be null!!")
-	@Future
+	@FutureOrPresent
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date orderdDate;
 	

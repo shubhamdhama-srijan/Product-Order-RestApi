@@ -33,19 +33,6 @@ public class ControllerAdvice extends ResponseEntityExceptionHandler{
         return new ResponseEntity<>(errorMap, HttpStatus.BAD_REQUEST);   
 	}
 	
-	
-	
-	
-//	@ResponseStatus(HttpStatus.BAD_REQUEST)
-//    @ExceptionHandler(MethodArgumentNotValidException.class)
-//    public Map<String, String> handleInvalidArgument(MethodArgumentNotValidException ex) {
-//        Map<String, String> errorMap = new HashMap<>();
-//        ex.getBindingResult().getFieldErrors().forEach(error -> {
-//            errorMap.put(error.getField(), error.getDefaultMessage());
-//        });
-//        return errorMap;
-//    }
-	
 	@Override
 	protected ResponseEntity<Object> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {

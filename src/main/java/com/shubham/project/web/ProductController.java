@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.shubham.project.dto.ProductRequest;
 import com.shubham.project.entity.Product;
 import com.shubham.project.service.ProductService;
 
@@ -27,8 +29,8 @@ public class ProductController {
 	private ProductService productService;
 	
 	@PostMapping
-    public ResponseEntity<Product> createProduct(@RequestBody Product product){
-        return new ResponseEntity<>(productService.createProduct(product), HttpStatus.CREATED);
+    public ResponseEntity<Product> createProduct(@RequestBody ProductRequest productRequest){
+        return new ResponseEntity<>(productService.createProduct(productRequest), HttpStatus.CREATED);
     }
 
     @GetMapping

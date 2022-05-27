@@ -23,7 +23,7 @@ public class ProductRequest {
 	private String productName;
 	
 	@Pattern(regexp = "^\\d{6}$",message = "Invalid Part number number entered!!")
-	private String partNo;
+	private int partNo;
 	
 	@NotBlank(message = "Product Label should not be Blank!!")
 	@NotNull(message = "Product Label should not be null!!")
@@ -31,7 +31,7 @@ public class ProductRequest {
 	
 	private List<Order> orders;
 	
-	private List<Purchase> purchases;
+//	private List<Purchase> purchases;
 
 
 }
