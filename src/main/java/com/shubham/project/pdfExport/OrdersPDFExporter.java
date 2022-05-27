@@ -52,6 +52,7 @@ public class OrdersPDFExporter {
 		table.addCell(cell);
 	}
 
+//	print the fields required
 	private void writeTableData(PdfPTable table) {
 		for (Order order : allOrders) {
 			table.addCell(String.valueOf(order.getOrdId()));

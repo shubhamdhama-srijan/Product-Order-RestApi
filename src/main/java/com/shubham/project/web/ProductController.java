@@ -2,7 +2,7 @@ package com.shubham.project.web;
 
 import java.util.List;
 
-
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,7 +29,7 @@ public class ProductController {
 	private ProductService productService;
 	
 	@PostMapping
-    public ResponseEntity<Product> createProduct(@RequestBody ProductRequest productRequest){
+    public ResponseEntity<Product> createProduct(@RequestBody @Valid ProductRequest productRequest){
         return new ResponseEntity<>(productService.createProduct(productRequest), HttpStatus.CREATED);
     }
 

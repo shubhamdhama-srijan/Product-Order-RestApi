@@ -30,7 +30,7 @@ public class Product {
 	private String productName;
 	
 	@Column(name = "PartNumber")
-	private int partNo;
+	private String partNo;
 	
 	@Column(name = "ProductLabel")
 	private String productLabel;
