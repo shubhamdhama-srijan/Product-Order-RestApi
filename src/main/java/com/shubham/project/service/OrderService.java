@@ -30,7 +30,7 @@ public class OrderService {
     public Order getOrderById(int id) {
 		
 		return orderRepository.findById(id).get();
-
+		
 	}
     
 	public Order updateOrder(Order order) {
@@ -43,6 +43,10 @@ public class OrderService {
 		
 	    orderRepository.deleteById(id);
 	}
+	
+//	public List<Order> getOrderByProductId(){
+//		
+//	}
 	
 	
 

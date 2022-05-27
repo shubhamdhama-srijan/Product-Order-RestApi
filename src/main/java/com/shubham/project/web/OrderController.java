@@ -11,8 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lowagie.text.DocumentException;
 //import com.lowagie.text.DocumentException;
 import com.shubham.project.entity.Order;
+import com.shubham.project.entity.Product;
 import com.shubham.project.pdfExport.OrdersPDFExporter;
 import com.shubham.project.service.OrderService;
 
@@ -43,6 +47,25 @@ public class OrderController {
     public ResponseEntity<Order> createOrder(@RequestBody Order order){
         return new ResponseEntity<>(orderService.createOrder(order), HttpStatus.CREATED);
     }
+    
+    @GetMapping("/{id}")
+   	public ResponseEntity<?> getOrderById(@PathVariable int id){
+   		Order order = orderService.getOrderById(id);
+   		return new ResponseEntity<Order>(order,HttpStatus.FOUND);
+   	}
+       
+       @PutMapping("/{id}")
+   	public Order updateOrder(@PathVariable int id, @RequestBody Order order){
+   		order.setOrdId(id);
+   		return orderService.updateOrder(order);
+   		
+   	}
+       
+       @DeleteMapping("/{id}")
+       public void deleteOrder(@PathVariable int id) {
+       	
+       	orderService.deleteOrder(id);
+       }
     
     @GetMapping("/export")
     public void exportToPDF(HttpServletResponse response) throws IOException {
