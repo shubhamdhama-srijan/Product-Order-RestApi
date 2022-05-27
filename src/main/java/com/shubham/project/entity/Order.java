@@ -33,6 +33,6 @@ public class Order {
 	private String orderName;
 	
 //	@Column(name = "OrderDate")
-	private String orderdDate;
+	private Date orderdDate;
 
 }
