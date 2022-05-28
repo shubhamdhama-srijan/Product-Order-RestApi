@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import com.shubham.project.entity.Order;
+import com.shubham.project.entity.Purchase;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,7 +31,7 @@ public class ProductRequest {
 	
 	private List<Order> orders;
 	
-//	private List<Purchase> purchases;
+	private List<Purchase> purchases;
 
 
 }
