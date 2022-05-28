@@ -26,7 +26,6 @@ public class Purchase {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "purchaseId")
 	private int purchId;
 	
 	@Column(name = "purchaseDate")

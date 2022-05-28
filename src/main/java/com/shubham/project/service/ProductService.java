@@ -23,13 +23,7 @@ public class ProductService {
     
     
 //  to create product
-    public Product createProduct(ProductRequest productRequest) {
-    	
-//    	Product product = Product.build(0, productRequest.getProductName(), 
-//    			productRequest.getPartNo(),
-//    			productRequest.getProductLabel(),
-//    			productRequest.getOrders(),
-//    			productRequest.ge);   
+    public Product createProduct(ProductRequest productRequest) {  
     	
     	Product product = Product.build(0, productRequest.getProductName(),
     			productRequest.getPartNo(),

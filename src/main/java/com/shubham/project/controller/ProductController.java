@@ -53,8 +53,8 @@ public class ProductController {
     
     @DeleteMapping("/{id}")
     public void deleteProduct(@PathVariable int id) {
-    	
     	productService.deleteProduct(id);
+//    	return  ResponseEntity.ok().body("Deleted Successfully");
     }
 
 }
