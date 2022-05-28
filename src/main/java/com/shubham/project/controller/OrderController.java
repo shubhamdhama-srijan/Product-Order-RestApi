@@ -62,9 +62,11 @@ public class OrderController {
    	}
        
        @DeleteMapping("/{id}")
-       public void deleteOrder(@PathVariable int id) {
+       public ResponseEntity<?> deleteOrder(@PathVariable int id) {
        	
        	orderService.deleteOrder(id);
+    	return  ResponseEntity.ok().body("Deleted Successfully");
+
        }
     
     @GetMapping("/export")
