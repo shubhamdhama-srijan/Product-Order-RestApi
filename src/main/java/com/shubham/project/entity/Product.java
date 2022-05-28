@@ -11,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -38,7 +41,13 @@ public class Product {
 //	@OneToMany(mappedBy = "product")
 	@OneToMany(targetEntity = Order.class,cascade = CascadeType.ALL)
 	@JoinColumn(name = "po_fk",referencedColumnName = "id")
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private List<Order> orders;
+	
+	@OneToMany(targetEntity = Purchase.class,cascade = CascadeType.ALL)
+	@JoinColumn(name = "pp_fk",referencedColumnName = "id")
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private List<Purchase> purchases;
 	
 
 }

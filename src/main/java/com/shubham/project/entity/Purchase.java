@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,8 +32,9 @@ public class Purchase {
 	@Column(name = "purchaseDate")
 	private Date purchDate;
 	
-//	@ManyToOne
-//	private Product product;
+	@ManyToOne
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private Product product;
 	
 	
 	

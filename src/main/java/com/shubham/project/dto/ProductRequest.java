@@ -31,7 +31,7 @@ public class ProductRequest {
 	
 	private List<Order> orders;
 	
-//	private List<Purchase> purchases;
+	private List<Purchase> purchases;
 
 
 }
