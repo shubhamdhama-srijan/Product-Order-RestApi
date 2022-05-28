@@ -52,9 +52,9 @@ public class ProductController {
 	}
     
     @DeleteMapping("/{id}")
-    public void deleteProduct(@PathVariable int id) {
+    public ResponseEntity<?> deleteProduct(@PathVariable int id) {
     	productService.deleteProduct(id);
-//    	return  ResponseEntity.ok().body("Deleted Successfully");
+    	return  ResponseEntity.ok().body("Deleted Successfully");
     }
 
 }
