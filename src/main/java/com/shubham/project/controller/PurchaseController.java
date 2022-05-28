@@ -50,6 +50,7 @@ public class PurchaseController {
 		
 	}
     
+//	delete a purchase by id
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletePurchase(@PathVariable int id) {
     	purchaseService.deletePurchase(id);
