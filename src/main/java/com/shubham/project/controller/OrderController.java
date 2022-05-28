@@ -1,4 +1,4 @@
-package com.shubham.project.web;
+package com.shubham.project.controller;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -24,8 +24,8 @@ import com.lowagie.text.DocumentException;
 //import com.lowagie.text.DocumentException;
 import com.shubham.project.entity.Order;
 import com.shubham.project.entity.Product;
-import com.shubham.project.pdfExport.OrdersPDFExporter;
 import com.shubham.project.service.OrderService;
+import com.shubham.project.util.OrdersPDFExporter;
 
 @RestController
 @RequestMapping("/orders")

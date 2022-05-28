@@ -1,4 +1,4 @@
-package com.shubham.project.web;
+package com.shubham.project.controller;
 
 import java.util.List;
 
