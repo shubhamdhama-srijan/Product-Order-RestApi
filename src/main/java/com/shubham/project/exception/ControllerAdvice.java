@@ -1,4 +1,4 @@
-package com.shubham.project.advice;
+package com.shubham.project.exception;
 
 import java.util.HashMap;
 import java.util.Map;
