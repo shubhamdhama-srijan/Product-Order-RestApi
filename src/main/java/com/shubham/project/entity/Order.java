@@ -1,5 +1,6 @@
 package com.shubham.project.entity;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -17,6 +18,7 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import com.fasterxml.jackson.annotation.OptBoolean;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -49,12 +51,11 @@ public class Order {
 	@NotBlank(message = "Order Name should not be Blank!!")
 	private String orderName;
 	
-//	@Column(name = "OrderDate")
-//	@NotBlank(message = "Order Date should not be Blank!!")
-	@NotNull(message = "Order Date should not be null!!")
-	@FutureOrPresent
-	@JsonFormat(pattern="yyyy-MM-dd")
-	@DateTimeFormat(iso = ISO.DATE)
-	private Date orderdDate;
+
+//	@NotNull(message = "Order Date should not be null!!")
+//	@FutureOrPresent
+//	@JsonFormat(pattern = "yyyy-mm-dd", lenient = OptBoolean.FALSE)
+	@DateTimeFormat(pattern = "yyyy-mm-dd")
+	private LocalDate orderdDate;
 
 }

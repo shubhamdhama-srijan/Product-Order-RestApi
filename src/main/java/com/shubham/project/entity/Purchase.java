@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "Purchase_table")
 @Data
-@AllArgsConstructor(staticName = "build")
+@AllArgsConstructor
 @NoArgsConstructor
 public class Purchase {
 
