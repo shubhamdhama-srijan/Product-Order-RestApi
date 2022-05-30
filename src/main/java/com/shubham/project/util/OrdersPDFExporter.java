@@ -39,7 +39,7 @@ public class OrdersPDFExporter {
 
 		table.addCell(cell);
 
-		cell.setPhrase(new Phrase("Product", font));
+		cell.setPhrase(new Phrase("Product Name", font));
 		table.addCell(cell);
 
 		cell.setPhrase(new Phrase("Order Title", font));

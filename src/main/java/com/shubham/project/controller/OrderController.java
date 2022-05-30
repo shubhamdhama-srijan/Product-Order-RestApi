@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,7 +45,7 @@ public class OrderController {
     
     //Route for creating a new order
     @PostMapping
-    public ResponseEntity<Order> createOrder(@RequestBody Order order){
+    public ResponseEntity<Order> createOrder(@RequestBody @Valid Order order){
         return new ResponseEntity<>(orderService.createOrder(order), HttpStatus.CREATED);
     }
     
