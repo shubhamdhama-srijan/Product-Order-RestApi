@@ -1,7 +1,9 @@
 package com.shubham.project.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.shubham.project.entity.Order;
 import com.shubham.project.entity.Product;
 import com.shubham.project.entity.Purchase;
 import com.shubham.project.service.PurchaseService;
@@ -28,12 +31,19 @@ public class PurchaseController {
 	PurchaseService purchaseService;
 	
 	@PostMapping
-	public ResponseEntity<Purchase> createPurchase(@RequestBody Purchase purchase){
+	public ResponseEntity<Purchase> createPurchase(@RequestBody @Valid Purchase purchase){
 		return new ResponseEntity<>(purchaseService.createPurchase(purchase),HttpStatus.CREATED);
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<Purchase>> getAllPurchases(){
+	public ResponseEntity<List<?>> getAllPurchases(){
+		List<Purchase> purchList = purchaseService.getAllPurchases();
+		List<String> msgList = new ArrayList<String>();
+		msgList.add("empty");
+		if(purchList==null) {
+	
+			return ResponseEntity.ok().body(msgList);
+		}
 		return ResponseEntity.ok(purchaseService.getAllPurchases());
 	}
 	

@@ -1,5 +1,6 @@
 package com.shubham.project.entity;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -31,10 +32,10 @@ public class Purchase {
 	@GeneratedValue
 	private int purchId;
 	
-	@Column(name = "purchaseDate")
-	@NotNull(message = "Order Date should not be null!!")
-	@JsonFormat(pattern="yyyy-MM-dd")
-	private Date purchDate;
+//	@Column(name = "purchaseDate")
+//	@NotNull(message = "Order Date should not be null!!")
+//	@JsonFormat(pattern="yyyy-MM-dd")
+	private LocalDate purchDate;
 	
 	@ManyToOne
 	@JsonProperty(access = Access.WRITE_ONLY)

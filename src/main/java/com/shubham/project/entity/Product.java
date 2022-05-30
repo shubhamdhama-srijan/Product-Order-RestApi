@@ -38,7 +38,6 @@ public class Product {
 	@Column(name = "ProductLabel")
 	private String productLabel;
 	
-//	@OneToMany(mappedBy = "product")
 	@OneToMany(targetEntity = Order.class,cascade = CascadeType.ALL)
 	@JoinColumn(name = "po_fk",referencedColumnName = "id")
 	@JsonProperty(access = Access.WRITE_ONLY)

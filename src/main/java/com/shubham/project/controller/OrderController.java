@@ -71,7 +71,7 @@ public class OrderController {
     }
        
        
-    @GetMapping("/pro/{id}")
+    @GetMapping("/productId/{id}")
     public List<Order> getOrdersByProductId(@PathVariable int id){
     	return orderService.getOrderByProductId(id);
     }
