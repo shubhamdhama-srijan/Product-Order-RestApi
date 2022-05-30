@@ -9,7 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -29,6 +32,8 @@ public class Purchase {
 	private int purchId;
 	
 	@Column(name = "purchaseDate")
+	@NotNull(message = "Order Date should not be null!!")
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date purchDate;
 	
 	@ManyToOne

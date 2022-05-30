@@ -39,7 +39,7 @@ public class OrdersPDFExporter {
 
 		table.addCell(cell);
 
-		cell.setPhrase(new Phrase("Product", font));
+		cell.setPhrase(new Phrase("Product Name", font));
 		table.addCell(cell);
 
 		cell.setPhrase(new Phrase("Order Title", font));
@@ -56,7 +56,7 @@ public class OrdersPDFExporter {
 	private void writeTableData(PdfPTable table) {
 		for (Order order : allOrders) {
 			table.addCell(String.valueOf(order.getOrdId()));
-			table.addCell(String.valueOf(order.getProduct().getId()));
+			table.addCell(String.valueOf(order.getProduct().getProductName()));
 			table.addCell(order.getOrderTitle());
 			table.addCell(order.getOrderName());
 			table.addCell(String.valueOf(order.getOrderdDate()));

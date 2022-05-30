@@ -18,6 +18,7 @@ public class PurchaseService {
 	}
 	
 	public Purchase createPurchase(Purchase purchase) {
+		
 		return purchaseRepository.save(purchase);
 	}
 	
