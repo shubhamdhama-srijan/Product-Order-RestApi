@@ -8,12 +8,19 @@ import org.springframework.stereotype.Service;
 
 import com.shubham.project.entity.Order;
 import com.shubham.project.repository.OrderRepository;
+import com.shubham.project.repository.ProductRepository;
 
 @Service
 public class OrderService {
 
 	@Autowired
 	private OrderRepository orderRepository;
+	
+	@Autowired
+	private ProductRepository productRepository;
+	
+	@Autowired
+	private ProductService productService;
 
 	//To get all the orders
 	public List<Order> getAllOrders() {
@@ -38,6 +45,10 @@ public class OrderService {
 	//To get order by id
 	public Optional<Order> getOrderByOrdId(int id) {
 		return orderRepository.findById(id);
+	}
+	
+	public List<Order> getOrderByProductId(int id){
+		return orderRepository.findAllOrdersByProductId(id);
 	}
 	
 	

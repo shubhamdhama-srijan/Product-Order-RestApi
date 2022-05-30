@@ -88,5 +88,12 @@ public class OrderController {
   		OrdersPDFExporter exporter=new OrdersPDFExporter(allOrders);
   		exporter.export(response);
   	}
+  	
+  	//Get order by product id
+  	@GetMapping("/pro/{id}")
+  	public List<Order> getOrdersByProductId(@PathVariable int id){
+    	return orderService.getOrderByProductId(id);
+    }
+
     
 }
