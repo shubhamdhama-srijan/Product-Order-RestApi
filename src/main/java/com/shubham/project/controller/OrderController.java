@@ -68,8 +68,14 @@ public class OrderController {
        	orderService.deleteOrder(id);
     	return  ResponseEntity.ok().body("Deleted Successfully");
 
-       }
-    
+    }
+       
+       
+    @GetMapping("/pro/{id}")
+    public List<Order> getOrdersByProductId(@PathVariable int id){
+    	return orderService.getOrderByProductId(id);
+    }
+       
     @GetMapping("/export")
     public void exportToPDF(HttpServletResponse response) throws IOException {
         response.setContentType("application/pdf");
@@ -86,5 +92,6 @@ public class OrderController {
         exporter.export(response);
          
     }
+    
     
 }
