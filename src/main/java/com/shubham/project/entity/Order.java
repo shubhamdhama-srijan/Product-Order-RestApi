@@ -51,7 +51,7 @@ public class Order {
 	@NotNull(message = "Order Date should not be null!!")
 	@FutureOrPresent
 	@JsonFormat(pattern="yyyy-MM-dd")
-	@DateTimeFormat(iso = ISO.DATE)
+	@DateTimeFormat(pattern = "yyyy-mm-dd")
 	private Date orderdDate;
 
 }
