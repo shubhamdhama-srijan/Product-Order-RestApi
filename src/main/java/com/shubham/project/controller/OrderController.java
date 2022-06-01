@@ -58,9 +58,9 @@ public class OrderController {
    	}
        
        @PutMapping("/{id}")
-   	public Order updateOrder(@PathVariable int id, @RequestBody Order order){
-   		order.setOrdId(id);
-   		return orderService.updateOrder(order);
+   	public Order updateOrder(@PathVariable int id, @RequestBody @Valid OrderRequest orderRequest){
+   		orderRequest.setOrdId(id);
+   		return orderService.updateOrder(orderRequest);
    		
    	}
        

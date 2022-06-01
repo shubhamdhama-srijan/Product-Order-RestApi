@@ -55,9 +55,9 @@ public class PurchaseController {
 	}
 	
 	@PutMapping("/{id}")
-	public Purchase updatePurchase(@PathVariable int id, @RequestBody Purchase purchase){
-		purchase.setPurchId(id);
-		return purchaseService.updatePurchase(purchase);
+	public Purchase updatePurchase(@PathVariable int id, @RequestBody @Valid PurchaseRequest purchaseRequest){
+		purchaseRequest.setPurchId(id);
+		return purchaseService.updatePurchase(purchaseRequest);
 		
 	}
     

@@ -20,6 +20,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class OrderRequest {
 
+	private int ordId;
+	
+	private Product product;
+	
 	@NotBlank(message = "Order Title should not be Blank!!")
 	@NotNull(message = "Order Title should not be null!!")
 	private String orderTitle;
@@ -33,7 +37,7 @@ public class OrderRequest {
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private LocalDate orderdDate;
 	
-	private Product product;
+	
 
 	
 }

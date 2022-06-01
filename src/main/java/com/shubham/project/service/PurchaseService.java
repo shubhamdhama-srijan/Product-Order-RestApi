@@ -30,7 +30,10 @@ public class PurchaseService {
 
 	}
     
-    public Purchase updatePurchase(Purchase purchase) {
+    public Purchase updatePurchase(PurchaseRequest purchaseRequest) {
+    	Purchase purchase = Purchase.build(purchaseRequest.getPurchId(),
+    			purchaseRequest.getPuchDate(),
+    			purchaseRequest.getProduct());
     	return purchaseRepository.save(purchase);
     }
     

@@ -49,20 +49,20 @@ public class OrderService {
 		
 	}
     
-	public Order updateOrder(Order order) {
-		
+	public Order updateOrder(OrderRequest orderRequest) {
+		Order order = Order.build(orderRequest.getOrdId(),
+				orderRequest.getProduct(),
+				orderRequest.getOrderTitle(),
+				orderRequest.getOrderName(),
+				orderRequest.getOrderdDate()
+				);
 		return orderRepository.save(order);
 
 	}
 	
 	public void deleteOrder(int id){
 		
-//	    try {
 	    	orderRepository.deleteById(id);
-//	    } catch (EmptyResultDataAccessException e) {
-//			
-//	    	throw new AttributeNotFoundException("not found");
-//		}
 	}
 	
 	public List<Order> getOrderByProductId(int id){
