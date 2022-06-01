@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "Purchase_table")
 @Data
-@AllArgsConstructor
+@AllArgsConstructor(staticName = "build")
 @NoArgsConstructor
 public class Purchase {
 
