@@ -11,4 +11,5 @@ import com.shubham.project.entity.Order;
 public interface OrderRepository extends JpaRepository<Order, Integer> {
 
 	List<Order> findAllOrdersByProductId(@Param("ordId")Integer id);
+//	void deleteById(Integer ordId);
 }

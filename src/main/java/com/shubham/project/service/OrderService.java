@@ -4,7 +4,10 @@ package com.shubham.project.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.management.AttributeNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -52,9 +55,14 @@ public class OrderService {
 
 	}
 	
-	public void deleteOrder(int id) {
+	public void deleteOrder(int id){
 		
-	    orderRepository.deleteById(id);
+//	    try {
+	    	orderRepository.deleteById(id);
+//	    } catch (EmptyResultDataAccessException e) {
+//			
+//	    	throw new AttributeNotFoundException("not found");
+//		}
 	}
 	
 	public List<Order> getOrderByProductId(int id){

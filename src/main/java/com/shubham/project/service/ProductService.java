@@ -25,7 +25,7 @@ public class ProductService {
 //  to create product
     public Product createProduct(ProductRequest productRequest) {  
     	
-    	Product product = Product.build(0, productRequest.getProductName(),
+    	Product product = Product.build(productRequest.getId(), productRequest.getProductName(),
     			productRequest.getPartNo(),
     			productRequest.getProductLabel(),
     			productRequest.getOrders(),
@@ -44,8 +44,13 @@ public class ProductService {
     
     
 //   update product 
-	public Product updateProduct(Product product) {
+	public Product updateProduct(ProductRequest productRequest) {
 		
+		Product product = Product.build(productRequest.getId(), productRequest.getProductName(),
+    			productRequest.getPartNo(),
+    			productRequest.getProductLabel(),
+    			productRequest.getOrders(),
+    			productRequest.getPurchases());
 		return productRepository.save(product);
 
 	}

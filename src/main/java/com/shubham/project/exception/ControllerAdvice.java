@@ -4,7 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
+import javax.management.AttributeNotFoundException;
+
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +26,12 @@ public class ControllerAdvice extends ResponseEntityExceptionHandler{
 	public ResponseEntity<String> handleDataIntegrityViolation(DataIntegrityViolationException dataIntegrityViolationException) {
 		return new ResponseEntity<String>("Attempting to delete a wrong id",HttpStatus.BAD_REQUEST);
 	}
+	
+	@ExceptionHandler(EmptyResultDataAccessException.class)
+	public ResponseEntity<String> handleNosuchIdException(EmptyResultDataAccessException emptyResultDataAccessException) {
+		return new ResponseEntity<String>("No such id exist",HttpStatus.NOT_FOUND);
+	}
+
 	
 	@ExceptionHandler(NoSuchElementException.class)
 	public ResponseEntity<String> handleNosuchElement(NoSuchElementException noSuchElementException) {

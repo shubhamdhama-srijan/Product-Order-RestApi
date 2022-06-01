@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProductRequest {
 	
+	private int id;
 	@NotBlank(message = "Product Name should not be Blank!!")
 	@NotNull(message = "Product Name should not be null!!")
 	private String productName;
