@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lowagie.text.DocumentException;
+import com.shubham.project.dto.OrderRequest;
 //import com.lowagie.text.DocumentException;
 import com.shubham.project.entity.Order;
 import com.shubham.project.entity.Product;
@@ -45,8 +46,8 @@ public class OrderController {
     }
     
     @PostMapping
-    public ResponseEntity<Order> createOrder(@RequestBody @Valid Order order){
-        return new ResponseEntity<>(orderService.createOrder(order), HttpStatus.CREATED);
+    public ResponseEntity<Order> createOrder(@RequestBody @Valid OrderRequest orderRequest){
+        return new ResponseEntity<>(orderService.createOrder(orderRequest), HttpStatus.CREATED);
     }
     
     @GetMapping("/{id}")

@@ -31,7 +31,11 @@ public class OrderService {
 		
 	}
 	
-	public Order createOrder(Order order) {
+	public Order createOrder(OrderRequest orderRequest) {
+		Order order = Order.build(0,
+				orderRequest.getProduct(),
+				orderRequest.getOrderTitle(),
+				orderRequest.getOrderName(), orderRequest.getOrderdDate());
     	return orderRepository.save(order);
     	
     }

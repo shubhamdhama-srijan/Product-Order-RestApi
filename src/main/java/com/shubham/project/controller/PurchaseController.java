@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.shubham.project.dto.PurchaseRequest;
 import com.shubham.project.entity.Order;
 import com.shubham.project.entity.Product;
 import com.shubham.project.entity.Purchase;
@@ -31,8 +32,8 @@ public class PurchaseController {
 	PurchaseService purchaseService;
 	
 	@PostMapping
-	public ResponseEntity<Purchase> createPurchase(@RequestBody @Valid Purchase purchase){
-		return new ResponseEntity<>(purchaseService.createPurchase(purchase),HttpStatus.CREATED);
+	public ResponseEntity<Purchase> createPurchase(@RequestBody @Valid PurchaseRequest purchaseRequest){
+		return new ResponseEntity<>(purchaseService.createPurchase(purchaseRequest),HttpStatus.CREATED);
 	}
 	
 	@GetMapping

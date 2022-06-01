@@ -41,21 +41,21 @@ public class Order {
 	
 //	@Column(name = "OrderTitle")
 	
-	@NotNull(message = "Order Title should not be null!!")
-	@NotBlank(message = "Order Title should not be Blank!!")
+//	@NotNull(message = "Order Title should not be null!!")
+//	@NotBlank(message = "Order Title should not be Blank!!")
 	private String orderTitle;
 	
 //	@Column(name = "OrderName")
 	
-	@NotNull(message = "Order Name should not be null!!")
-	@NotBlank(message = "Order Name should not be Blank!!")
+//	@NotNull(message = "Order Name should not be null!!")
+//	@NotBlank(message = "Order Name should not be Blank!!")
 	private String orderName;
 	
 
 //	@NotNull(message = "Order Date should not be null!!")
 //	@FutureOrPresent
 //	@JsonFormat(pattern = "yyyy-mm-dd", lenient = OptBoolean.FALSE)
-	@DateTimeFormat(pattern = "yyyy-mm-dd")
+//	@DateTimeFormat(pattern = "yyyy-mm-dd")
 	private LocalDate orderdDate;
 
 }

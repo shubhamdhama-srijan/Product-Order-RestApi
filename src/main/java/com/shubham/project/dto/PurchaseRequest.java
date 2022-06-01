@@ -1,11 +1,8 @@
 package com.shubham.project.dto;
 
 import java.time.LocalDate;
-import java.util.Date;
 
-import javax.validation.constraints.Future;
 import javax.validation.constraints.FutureOrPresent;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -18,22 +15,15 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor(staticName = "build")
 @NoArgsConstructor
-public class OrderRequest {
-
-	@NotBlank(message = "Order Title should not be Blank!!")
-	@NotNull(message = "Order Title should not be null!!")
-	private String orderTitle;
+public class PurchaseRequest {
 	
-	@NotBlank(message = "Order Name should not be Blank!!")
-	@NotNull(message = "Order Name should not be null!!")
-	private String orderName;
+	private int purchId;
 	
 	@NotNull(message = "Order Date should not be null!!")
 	@FutureOrPresent
 	@JsonFormat(pattern="yyyy-MM-dd")
-	private LocalDate orderdDate;
+	private LocalDate puchDate;
 	
 	private Product product;
 
-	
 }

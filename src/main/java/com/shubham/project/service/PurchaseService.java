@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.shubham.project.dto.PurchaseRequest;
 import com.shubham.project.entity.Purchase;
 import com.shubham.project.repository.PurchaseRepository;
 
@@ -17,8 +19,8 @@ public class PurchaseService {
 		return purchaseRepository.findAll();
 	}
 	
-	public Purchase createPurchase(Purchase purchase) {
-		
+	public Purchase createPurchase(PurchaseRequest purchaseRequest) {
+		Purchase purchase = Purchase.build(0, purchaseRequest.getPuchDate(), purchaseRequest.getProduct());
 		return purchaseRepository.save(purchase);
 	}
 	
