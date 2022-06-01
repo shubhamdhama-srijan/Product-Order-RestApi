@@ -47,7 +47,7 @@ public class ProductController {
     @PutMapping("/{id}")
 	public Product updateProduct(@PathVariable int id, @RequestBody @Valid ProductRequest productRequest){
 		productRequest.setId(id);
-		return productService.updateProduct(productRequest);
+		return productService.updateProduct(id,productRequest);
 		
 	}
     

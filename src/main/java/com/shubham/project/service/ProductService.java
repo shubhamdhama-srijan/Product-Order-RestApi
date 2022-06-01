@@ -44,7 +44,7 @@ public class ProductService {
     
     
 //   update product 
-	public Product updateProduct(ProductRequest productRequest) {
+	public Product updateProduct(int id,ProductRequest productRequest) {
 		
 		Product product = Product.build(productRequest.getId(), productRequest.getProductName(),
     			productRequest.getPartNo(),

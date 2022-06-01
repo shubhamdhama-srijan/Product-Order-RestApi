@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import com.shubham.project.dto.OrderRequest;
 import com.shubham.project.entity.Order;
 import com.shubham.project.entity.Product;
+import com.shubham.project.exception.IdNotFoundException;
 import com.shubham.project.repository.OrderRepository;
 import com.shubham.project.repository.ProductRepository;
 
@@ -67,7 +68,11 @@ public class OrderService {
 	
 	public List<Order> getOrderByProductId(int id){
 		
-		return orderRepository.findAllOrdersByProductId(id);
+		if(productRepository.existsById(id)) {
+			return orderRepository.findAllOrdersByProductId(id);
+		}
+		
+		throw new IdNotFoundException("No such id found");
 		
 	}
 	

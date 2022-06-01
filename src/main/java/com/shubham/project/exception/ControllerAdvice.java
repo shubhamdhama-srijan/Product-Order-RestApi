@@ -31,6 +31,11 @@ public class ControllerAdvice extends ResponseEntityExceptionHandler{
 	public ResponseEntity<String> handleNosuchIdException(EmptyResultDataAccessException emptyResultDataAccessException) {
 		return new ResponseEntity<String>("No such id exist",HttpStatus.NOT_FOUND);
 	}
+	
+	@ExceptionHandler(IdNotFoundException.class)
+	public ResponseEntity<String> handleNosuchIdException(IdNotFoundException emptyResultDataAccessException) {
+		return new ResponseEntity<String>("No such id found",HttpStatus.NOT_FOUND);
+	}
 
 	
 	@ExceptionHandler(NoSuchElementException.class)

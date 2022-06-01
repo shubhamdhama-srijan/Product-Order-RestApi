@@ -19,10 +19,10 @@ public class PurchaseRequest {
 	
 	private int purchId;
 	
-	@NotNull(message = "Order Date should not be null!!")
+	@NotNull(message = "purchase Date should not be null!!")
 	@FutureOrPresent
 	@JsonFormat(pattern="yyyy-MM-dd")
-	private LocalDate puchDate;
+	private LocalDate purchDate;
 	
 	private Product product;
 

@@ -33,8 +33,6 @@ public class Purchase {
 	private int purchId;
 	
 //	@Column(name = "purchaseDate")
-//	@NotNull(message = "Order Date should not be null!!")
-//	@JsonFormat(pattern="yyyy-MM-dd")
 	private LocalDate purchDate;
 	
 	@ManyToOne
