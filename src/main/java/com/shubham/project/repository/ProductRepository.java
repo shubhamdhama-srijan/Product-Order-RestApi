@@ -6,4 +6,5 @@ import com.shubham.project.entity.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Integer>{
 
+	boolean existsById(Integer id);
 }

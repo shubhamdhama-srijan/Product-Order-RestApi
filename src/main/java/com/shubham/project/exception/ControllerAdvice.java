@@ -23,34 +23,39 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class ControllerAdvice extends ResponseEntityExceptionHandler{
 
 	@ExceptionHandler(DataIntegrityViolationException.class)
-	public ResponseEntity<String> handleDataIntegrityViolation(DataIntegrityViolationException dataIntegrityViolationException) {
-		return new ResponseEntity<String>("Attempting to delete a wrong id",HttpStatus.BAD_REQUEST);
+	public ResponseEntity<Object> handleDataIntegrityViolation(DataIntegrityViolationException dataIntegrityViolationException) {
+		return new ResponseEntity<Object>("Attempting to delete a wrong id",HttpStatus.BAD_REQUEST);
 	}
 	
 	@ExceptionHandler(EmptyResultDataAccessException.class)
-	public ResponseEntity<String> handleNosuchIdException(EmptyResultDataAccessException emptyResultDataAccessException) {
-		return new ResponseEntity<String>("No such id exist",HttpStatus.NOT_FOUND);
+	public ResponseEntity<Object> handleNosuchIdException(EmptyResultDataAccessException emptyResultDataAccessException) {
+		return new ResponseEntity<Object>("No such id exist",HttpStatus.NOT_FOUND);
 	}
 	
 	@ExceptionHandler(IdNotFoundException.class)
-	public ResponseEntity<String> handleNosuchIdException(IdNotFoundException emptyResultDataAccessException) {
-		return new ResponseEntity<String>("No such id found",HttpStatus.NOT_FOUND);
+	public ResponseEntity<Object> handleNosuchIdException(IdNotFoundException emptyResultDataAccessException) {
+		return new ResponseEntity<Object>("No such id found",HttpStatus.NOT_FOUND);
 	}
 
 	
 	@ExceptionHandler(NoSuchElementException.class)
-	public ResponseEntity<String> handleNosuchElement(NoSuchElementException noSuchElementException) {
-		return new ResponseEntity<String>("No such value found",HttpStatus.NOT_FOUND);
+	public ResponseEntity<Object> handleNosuchElement(NoSuchElementException noSuchElementException) {
+		return new ResponseEntity<Object>("No such value found",HttpStatus.NOT_FOUND);
 	}
 	
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
         Map<String, String> errorMap = new HashMap<>();
+        Map<String,String> map = new HashMap<>();
+//        String string = "";
         ex.getBindingResult().getFieldErrors().forEach(error -> {
+//        	str+=error.getField()+","+error.getDefaultMessage();
             errorMap.put(error.getField(), error.getDefaultMessage());
         });
-        return new ResponseEntity<>(errorMap, HttpStatus.BAD_REQUEST);   
+        map.put("code", HttpStatus.BAD_REQUEST.toString());
+        map.put("message", errorMap.toString());
+        return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);   
 	}
 	
 	@Override
