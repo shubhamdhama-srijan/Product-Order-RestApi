@@ -11,6 +11,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -31,6 +32,16 @@ public class ControllerAdvice extends ResponseEntityExceptionHandler{
         map.put("message", errorMap.toString());
 		return new ResponseEntity<Object>(map,HttpStatus.BAD_REQUEST);
 	}
+	
+//	@ExceptionHandler(HttpMessageNotReadableException.class)
+//	public ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException httpMessageNotReadableException) {
+//		Map<String, String> errorMap = new HashMap<>();
+//		errorMap.put("Error"," Change the request type");
+//        Map<String,String> map = new HashMap<>();
+//		map.put("code", HttpStatus.BAD_REQUEST.toString());
+//        map.put("message", errorMap.toString());
+//		return new ResponseEntity<Object>(map,HttpStatus.BAD_REQUEST);
+//	}
 	
 	@ExceptionHandler(EmptyResultDataAccessException.class)
 	public ResponseEntity<Object> handleNosuchIdException(EmptyResultDataAccessException emptyResultDataAccessException) {
@@ -93,6 +104,18 @@ public class ControllerAdvice extends ResponseEntityExceptionHandler{
 		return new ResponseEntity<Object>(map,HttpStatus.BAD_REQUEST);
 	}
 	
+	@Override
+	protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex,
+			HttpHeaders headers, HttpStatus status, WebRequest request) {
+		Map<String, String> errorMap = new HashMap<>();
+		errorMap.put("Error"," Change the request type");
+        Map<String,String> map = new HashMap<>();
+		map.put("code", HttpStatus.BAD_REQUEST.toString());
+        map.put("message", errorMap.toString());
+		return new ResponseEntity<Object>(map,HttpStatus.BAD_REQUEST);
+	}
+	
    
+	
 	
 }
