@@ -1,5 +1,6 @@
 package com.shubham.project.entity;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -52,6 +53,6 @@ public class Order {
 	@FutureOrPresent
 	@JsonFormat(pattern="yyyy-MM-dd")
 	@DateTimeFormat(pattern = "yyyy-mm-dd")
-	private Date orderdDate;
+	private LocalDate orderdDate;
 
 }
