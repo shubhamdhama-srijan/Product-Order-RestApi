@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,7 +28,7 @@ import com.shubham.project.entity.Order;
 import com.shubham.project.entity.Product;
 import com.shubham.project.repository.OrderRepository;
 import com.shubham.project.service.OrderService;
-import com.shubham.project.util.OrdersPDFExporter;
+import com.shubham.project.util.PDFGenerator;
 
 @RestController
 @RequestMapping("/orders")
@@ -35,6 +36,9 @@ public class OrderController {
 	
 	@Autowired
 	private OrderService orderService;
+	
+	@Autowired
+	private ApplicationContext ac;
 	
 	//Route for getting all the orders
     @GetMapping
@@ -73,20 +77,9 @@ public class OrderController {
   	@GetMapping("/export")
   	public void exportOrderDetailsToPDF(HttpServletResponse response) throws DocumentException, IOException {
   		
-  		response.setContentType("application/pdf");
-  		
-  		DateFormat dateFormatter=new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
-  		
-  		String currentDateTime=dateFormatter.format(new Date());
-  		String headerKey="Content-Disposition";
-  		String headerValue="attachment; filename=orders_"+ currentDateTime+".pdf";
-  		
-  		response.setHeader(headerKey, headerValue);
-  		
-  		List<Order> allOrders=orderService.getAllOrders();
-  		
-  		OrdersPDFExporter exporter=new OrdersPDFExporter(allOrders);
-  		exporter.export(response);
+  		PDFGenerator pDFGenerator = ac.getBean("pdfGenerator",PDFGenerator.class);
+		
+		pDFGenerator.generatePdfReport(response);
   	}
   	
   	//Get order by product id
