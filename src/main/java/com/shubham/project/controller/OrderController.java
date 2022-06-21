@@ -25,19 +25,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lowagie.text.DocumentException;
 import com.shubham.project.dto.OrderRequest;
-//import com.lowagie.text.DocumentException;
 import com.shubham.project.entity.Order;
-import com.shubham.project.entity.Product;
 import com.shubham.project.service.OrderService;
-import com.shubham.project.util.OrdersPDFExporter;
 import com.shubham.project.util.PDFGenerator;
 
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
 	
-//	@Autowired
-//	OrderRepository orderRepository;
 	
 	@Autowired
 	OrderService orderService;

@@ -26,9 +26,9 @@ public class ControllerAdvice extends ResponseEntityExceptionHandler{
 	@ExceptionHandler(DataIntegrityViolationException.class)
 	public ResponseEntity<Object> handleDataIntegrityViolation(DataIntegrityViolationException dataIntegrityViolationException) {
 		Map<String, String> errorMap = new HashMap<>();
-		errorMap.put("Error"," Attempting to delete a wrong id");
+		errorMap.put("Error"," Check for the parent id");
         Map<String,String> map = new HashMap<>();
-		map.put("code", HttpStatus.BAD_REQUEST.toString());
+		map.put("code", "400");
         map.put("message", errorMap.toString());
 		return new ResponseEntity<Object>(map,HttpStatus.BAD_REQUEST);
 	}
@@ -48,7 +48,7 @@ public class ControllerAdvice extends ResponseEntityExceptionHandler{
 		Map<String, String> errorMap = new HashMap<>();
 		errorMap.put("Error"," No such id Exist");
         Map<String,String> map = new HashMap<>();
-		map.put("code", HttpStatus.NOT_FOUND.toString());
+		map.put("code", "404");
         map.put("message", errorMap.toString());
 		return new ResponseEntity<Object>(map,HttpStatus.NOT_FOUND);
 	}
@@ -59,7 +59,7 @@ public class ControllerAdvice extends ResponseEntityExceptionHandler{
 		Map<String, String> errorMap = new HashMap<>();
 		errorMap.put("Error"," No such id found");
         Map<String,String> map = new HashMap<>();
-        map.put("code", HttpStatus.NOT_FOUND.toString());
+        map.put("code", "404");
         map.put("message", errorMap.toString());
 		return new ResponseEntity<Object>(map,HttpStatus.NOT_FOUND);
 	}
@@ -70,7 +70,7 @@ public class ControllerAdvice extends ResponseEntityExceptionHandler{
 		Map<String, String> errorMap = new HashMap<>();
 		errorMap.put("Error"," No such value found");
         Map<String,String> map = new HashMap<>();
-        map.put("code", HttpStatus.NOT_FOUND.toString());
+        map.put("code", "400");
         map.put("message", errorMap.toString());
 		return new ResponseEntity<Object>(map,HttpStatus.NOT_FOUND);
 	}
@@ -87,7 +87,7 @@ public class ControllerAdvice extends ResponseEntityExceptionHandler{
 //        	str+=error.getField()+","+error.getDefaultMessage();
             errorMap.put(error.getField(), error.getDefaultMessage());
         });
-        map.put("code", HttpStatus.BAD_REQUEST.toString());
+        map.put("code", "400");
         map.put("message", errorMap.toString());
         return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);   
 	}
@@ -99,7 +99,7 @@ public class ControllerAdvice extends ResponseEntityExceptionHandler{
 		Map<String, String> errorMap = new HashMap<>();
 		errorMap.put("Error"," Change the request type");
         Map<String,String> map = new HashMap<>();
-		map.put("code", HttpStatus.BAD_REQUEST.toString());
+		map.put("code", "400");
         map.put("message", errorMap.toString());
 		return new ResponseEntity<Object>(map,HttpStatus.BAD_REQUEST);
 	}
@@ -108,9 +108,9 @@ public class ControllerAdvice extends ResponseEntityExceptionHandler{
 	protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
 		Map<String, String> errorMap = new HashMap<>();
-		errorMap.put("Error"," Change the request type");
+		errorMap.put("Error","Invalid Request Body");
         Map<String,String> map = new HashMap<>();
-		map.put("code", HttpStatus.BAD_REQUEST.toString());
+		map.put("code", "400");
         map.put("message", errorMap.toString());
 		return new ResponseEntity<Object>(map,HttpStatus.BAD_REQUEST);
 	}

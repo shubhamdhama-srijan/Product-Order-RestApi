@@ -23,7 +23,7 @@ public class ProductRequest {
 	@NotNull(message = "Product Name should not be null!!")
 	private String productName;
 	
-	@Pattern(regexp = "^\\d{6}$",message = "Invalid Part number number entered!!")
+	@Pattern(regexp = "^\\d{6}$",message = "Invalid Part number entered!!")
 	private String partNo;
 	
 	@NotBlank(message = "Product Label should not be Blank!!")
